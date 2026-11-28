@@ -66,17 +66,12 @@ After state 4 the controller returns to state 1 and repeats.
 Each arrow is labelled with how long the current state lasts before the controller moves on. The reset input always returns the controller to S1.
 
 ```mermaid
-stateDiagram-v2
-    direction LR
-    [*] --> S1 : reset
-    S1 --> S2 : 10 s
-    S2 --> S3 : 3 s
-    S3 --> S4 : 10 s
-    S4 --> S1 : 3 s
-    S1 : S1 - A green, B red
-    S2 : S2 - A yellow, B red
-    S3 : S3 - A red, B green
-    S4 : S4 - A red, B yellow
+flowchart LR
+    RST([reset]) --> S1
+    S1("S1: A green, B red") -->|10 s| S2("S2: A yellow, B red")
+    S2 -->|3 s| S3("S3: A red, B green")
+    S3 -->|10 s| S4("S4: A red, B yellow")
+    S4 -->|3 s| S1
 ```
 
 **State transition table** (outputs are those shown while in the current state, as in a Moore machine)
