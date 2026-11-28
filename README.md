@@ -65,19 +65,7 @@ After state 4 the controller returns to state 1 and repeats.
 
 Each arrow is labelled with how long the current state lasts before the controller moves on. The reset input always returns the controller to S1.
 
-```mermaid
-stateDiagram-v2
-    direction LR
-    [*] --> S1 : reset
-    S1 --> S2 : 10 s
-    S2 --> S3 : 3 s
-    S3 --> S4 : 10 s
-    S4 --> S1 : 3 s
-    S1 : S1 - A green, B red
-    S2 : S2 - A yellow, B red
-    S3 : S3 - A red, B green
-    S4 : S4 - A red, B yellow
-```
+![State diagram](state_diagram.png.png)
 
 **State transition table** (outputs are those shown while in the current state, as in a Moore machine)
 
@@ -115,9 +103,9 @@ File: `Design.sv`, module `traffic_light`.
 3. Simulating the real 50 MHz value would take over a billion clock ticks per cycle, so the testbench uses a small value for CLK_FREQ: 10. This means 10 clock cycles stand for one second, so the 10-second states last 100 clock cycles and the 3-second states last 30. The design logic is exactly the same, only the number the counter counts to changes. The design file keeps the real default of 50,000,000.
 4. The waveforms were viewed in EPWave. In the waveform the state is shown as a number: S1 = 0, S2 = 1, S3 = 2 and S4 = 3.
 
-<!-- To add the waveform picture: upload the screenshot to the repo, then remove these comment marks and put the real file name in the brackets.
-![Simulation waveform](waveform.png)
--->
+
+![Simulation waveform](waveform.png.jpg)
+
 
 **Results**
 
